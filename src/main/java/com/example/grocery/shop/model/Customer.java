@@ -5,12 +5,8 @@ import java.util.List;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
 
 @Document(collection = "customer")
-@Data
-@AllArgsConstructor
 public class Customer {
     @Id
     private String id;
@@ -59,6 +55,7 @@ public class Customer {
         this.totalPriceInCart = totalPriceInCart;
         this.totalOrderCost = totalOrderCost;
     }
+
     public List<Product> getCustomerOrder() {
         return customerOrder;
     }

@@ -2,11 +2,7 @@ package com.example.grocery.shop.webResponse;
 
 import com.example.grocery.shop.model.Customer;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
 
-@Data
-@AllArgsConstructor
 public class CustomerResponse {
     private String message;
     private Customer customer;
