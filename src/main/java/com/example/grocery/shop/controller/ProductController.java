@@ -57,11 +57,13 @@ public class ProductController {
         int totalPrice=0;
         Optional<Customer> customer=customerRepository.findById(addToCartRequest.getCustomerId());
         if(customer.isPresent()){
-            for(int i=0;i<addToCartRequest.getProducts().size();i++){
-                totalPrice+=addToCartRequest.getProducts().get(i).getPPrice();
+            List<Product> alreadyCartItems=customer.get().getCustomerCart();
+            alreadyCartItems.addAll(addToCartRequest.getProducts());
+            for(int i=0;i<alreadyCartItems.size();i++){
+                totalPrice+=alreadyCartItems.get(i).getPPrice();
             }
             Customer customer2=customer.get();
-            customer2.setCustomerCart(addToCartRequest.getProducts());
+            customer2.setCustomerCart(alreadyCartItems);
             customer2.setTotalPriceInCart(totalPrice);
             customerRepository.save(customer2);
             return new AddToCartResponse("product added to cart successfully",null);
