@@ -6,6 +6,7 @@ import com.example.grocery.shop.webRequest.LoginRequest;
 import com.example.grocery.shop.webResponse.CustomerResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,6 +32,7 @@ public class HomeController {
     
     }
 
+    @CrossOrigin(origins ="http://localhost:4200")
     @PostMapping("/login")
     public CustomerResponse loginCustomer(@RequestBody LoginRequest loginRequest){
         Customer cr=cRepository.findByEmailAndPassword(loginRequest.getEmail(),loginRequest.getPassword());
