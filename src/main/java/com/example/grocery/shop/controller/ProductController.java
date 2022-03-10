@@ -51,6 +51,7 @@ public class ProductController {
         return new AllProductResponse("Product fetched successfully",pList);
     }
 
+    @CrossOrigin(origins ="http://localhost:4200")
     @PostMapping("/addToCart")
     public AddToCartResponse addToCart(@RequestBody AddToCartRequest addToCartRequest){
         int totalPrice=0;
